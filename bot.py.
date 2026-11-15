@@ -5,7 +5,11 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from urllib.parse import quote
 
-TOKEN = "YOUR_BOT_TOKEN"
+import os
+TOKEN = os.getenv("BOT_TOKEN")
+
+if not TOKEN:
+    raise RuntimeError("Не найден BOT_TOKEN")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
